@@ -1,4 +1,17 @@
 * {
   box-sizing: border-box; }
 
+.column-container {
+  width: 90%;
+  display: block;
+  margin: 0 auto; }
+
+.main-list {
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #c8f7c5;
+  margin: 5px;
+  padding: 5px; }
+
 /*# sourceMappingURL=styles.css.map*/
