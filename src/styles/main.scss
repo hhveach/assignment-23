@@ -4,9 +4,9 @@
 
 body{}
 
-// input:active {
-// 	outline: none;
-// }
+input:focus {
+	outline: none;
+}
 
 .column-container {
 	width: 95%;
