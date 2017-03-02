@@ -4,14 +4,27 @@ import $ from 'jquery';
 
 const CongMainList = React.createClass({
 
+  // SyntheticEvent: function({
+  //   console.log()
+  // })
+
+  _handleZipInput: function(evt){
+    let input = evt.target.value;
+    if(this._handleZipInput && evt.keyCode === 13){
+      $.getJSON(`https://congress.api.sunlightfoundation.com/legislators/locate?zip=${input}&callback=?`).then(function(serverRes){
+        ReactDOM.render( <CongMainList mainList={serverRes.results}/>, document.querySelector('#app-container'));
+      });
+    }
+  },
+
   render: function(){
     const { mainList } = this.props;
     return (
       <div className="column-container">
-        <input className="zip-code" type="text" placeholder="Search Legislators by ZIP" />
+        <input onKeyDown={this._handleZipInput} className="zip-code" type="text" placeholder="Search Legislators by ZIP" />
         {mainList.map(function(listEl){
-          return <CreateCongList senInfo={listEl}/>;
-        })};
+          return <CreateCongList senInfo={listEl}/>
+        })}
       </div>
     )
   }
